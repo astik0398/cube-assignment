@@ -22,11 +22,11 @@ This is a single-page application built with React that serves as a customer det
 
 ### `1`
 
-![alt text](<scrnli_4_4_2024_1-42-52 PM.png>)
+![alt text](<scrnli_4_4_2024_3-17-49 PM-1.png>)
 
 ### `2`
 
-![alt text](<scrnli_4_4_2024_3-17-49 PM-1.png>)
+![alt text](<scrnli_4_4_2024_1-42-52 PM.png>)
 
 ## Running app to your system
 
