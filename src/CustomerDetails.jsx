@@ -44,9 +44,7 @@ const CustomerDetails = ({ activeIndex }) => {
           aliquam ex porro odit provident, eum aspernatur unde itaque voluptatem
           consequuntur ut consectetur distinctio illum incidunt aut quas facilis
           doloribus at. Maiores est, possimus quaerat numquam incidunt in cumque
-          corporis aperiam. Ipsa architecto qui velit quibusdam, neque non
-          tempora aperiam doloribus fugit consectetur a atque assumenda
-          explicabo laudantium reiciendis dolorem ducimus!
+          corporis aperiam. Ipsa architecto qui velit quibusdam.
         </p>
       </div>
 

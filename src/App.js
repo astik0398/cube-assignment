@@ -2,17 +2,34 @@ import logo from "./logo.svg";
 import "./App.css";
 import CustomerList from "./CustomerList";
 import CustomerDetails from "./CustomerDetails";
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
 function App() {
   const [customers, setCustomers] = useState(
-    new Array(100).fill().map((_, index) => `Customer ${index + 1}`)
+    new Array(5).fill().map((_, index) => `Customer ${index + 1}`)
   );
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(false)
+  const leftDivRef = useRef(null);
 
   function handleActiveDiv(index) {
     setActiveIndex(index);
   }
+
+  const handleScroll = useCallback(() => {
+    const { scrollTop, clientHeight, scrollHeight } = leftDivRef.current;
+    if (scrollTop + clientHeight >= scrollHeight -1 ) {
+      setIsLoading(true)
+      setTimeout(()=> {
+        setCustomers((prevCustomers) =>
+        prevCustomers.concat(
+          new Array(5).fill().map((_, index) => `Customer ${prevCustomers.length + index + 1}`)
+        )
+      );
+      setIsLoading(false)
+      }, 1000)
+    }
+  }, []);
 
   return (
     <div
@@ -20,19 +37,24 @@ function App() {
       className="App"
     >
       <div
+      className="left-div"
         style={{
           width: "30%",
           overflowY: "auto",
-          maxHeight: "calc(100vh + 150px)",
+          maxHeight: "calc(100vh)",
         }}
+        ref={leftDivRef}
+        onScroll={handleScroll}
       >
         <CustomerList
           customers={customers}
           activeIndex={activeIndex}
           handleActiveDiv={handleActiveDiv}
+          setCustomers={setCustomers}
         />
+        {isLoading && <h2>Loading...</h2>}
       </div>
-      <div style={{ width: "70%", backgroundColor: "#f9f9f9" }}>
+      <div className="right-div" style={{ width: "70%", backgroundColor: "#f9f9f9" }}>
         <CustomerDetails activeIndex={activeIndex} />
       </div>
     </div>
