@@ -4,11 +4,12 @@ import "./CustomerDetails.css";
 const CustomerDetails = ({ activeIndex }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const apiKey = process.env.api_key
 
   useEffect(() => {
     setLoading(true);
     let response = fetch(
-      "https://api.thedogapi.com/v1/images/search?limit=50&api_key=live_4H0yIoDnY1r7wZLAfPkuDAZg2mqxbm5bnojCmooMnBoziXUieogmW6kL8YT37vgs"
+      `https://api.thedogapi.com/v1/images/search?limit=50&api_key=${apiKey}`
     );
     response
       .then(function (res) {
@@ -17,7 +18,6 @@ const CustomerDetails = ({ activeIndex }) => {
       .then(function (res) {
         setData(res.map((item) => item.url));
         setLoading(false);
-        console.log(data);
       });
   }, [activeIndex]);
 
@@ -51,7 +51,7 @@ const CustomerDetails = ({ activeIndex }) => {
       </div>
 
       {loading ? (
-        <div class="loader"></div>
+        <div className="loader"></div>
       ) : (
         <div className="image-container">
           {data?.slice(0, 9).map((item, index) => (

@@ -24,6 +24,10 @@ This is a single-page application built with React that serves as a customer det
 
 ![alt text](<scrnli_4_4_2024_1-42-52 PM.png>)
 
+### `2`
+
+![alt text](<scrnli_4_4_2024_3-17-49 PM-1.png>)
+
 ## Running app to your system
 
 ### `Clone the repository`
